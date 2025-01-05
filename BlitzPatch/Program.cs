@@ -14,7 +14,7 @@ namespace BlitzPatch
             Db db = new Db();
             // db.viewUnits();
             // 
-            db.loadUnit("D:\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\Data\\User_\\a_");
+            db.tickComplete("D:\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\Data\\User_\\a_");
             Console.ReadKey();
             // db.test("D:\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\Data\\User_\\a_");
             // Console.WriteLine();

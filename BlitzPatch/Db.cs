@@ -85,11 +85,35 @@ namespace BlitzPatch
                     {
                         if (document.ContainsKey("j_") && document["j_"].ToString().Contains("Units"))
                         {
-                            Console.WriteLine(document["j_"].ToString());
+                            var jElement = document["j_"]; 
+                            Console.WriteLine(jElement.ToString());
                         }
-                        else
+                    }
+                }
+            }
+        }
+
+        public void tickComplete(string path)
+        {
+            using (var db = new LiteDatabase(path))
+            {
+                var collectionNames = db.GetCollectionNames();
+
+                Console.WriteLine("Collections in the database:");
+                foreach (var name in collectionNames)
+                {
+                    Console.WriteLine($"- {name}");
+                    var documents = db.GetCollection(name).FindAll();
+                    foreach (var document in documents)
+                    {
+                        if (document.ContainsKey("j_") && document["j_"].ToString().Contains("FactionProgress"))
                         {
-                            Console.WriteLine("No 'Units' field in this document.");
+                            var jElement = document["j_"];
+                            // Console.WriteLine(jElement.ToString());
+                            if (jElement.ToString().Contains("\\\"MaxAchievedStars\\\":"))
+                            {
+                                
+                            }
                         }
                     }
                 }
