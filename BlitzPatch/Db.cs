@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
@@ -67,6 +68,35 @@ namespace BlitzPatch
             File.WriteAllText(filePath, jsonString);
             Console.WriteLine($"JSON file created at: {filePath}");
 
+        }
+
+        public void loadUnit(string path)
+        {
+            using (var db = new LiteDatabase(path))
+            {
+                // var collection = db.GetCollection("YourCollectionName");
+                // var document = collection.FindOne(Query.Contains("Units", ""));
+                var collectionNames = db.GetCollectionNames(); // Get all collection names
+
+                Console.WriteLine("Collections in the database:");
+                foreach (var name in collectionNames)
+                {
+                    Console.WriteLine($"- {name}");
+                    var documents = db.GetCollection(name).FindAll();
+                    foreach (var document in documents)
+                    {
+                        // Check if the document contains the "Units" field
+                        if (document.ContainsKey("j_") && document["j_"].ToString().Contains("Units"))
+                        {
+                            Console.WriteLine(document["j_"].ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("No 'Units' field in this document.");
+                        }
+                    }
+                }
+            }
         }
 
         class Unit
