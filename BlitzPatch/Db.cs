@@ -74,9 +74,7 @@ namespace BlitzPatch
         {
             using (var db = new LiteDatabase(path))
             {
-                // var collection = db.GetCollection("YourCollectionName");
-                // var document = collection.FindOne(Query.Contains("Units", ""));
-                var collectionNames = db.GetCollectionNames(); // Get all collection names
+                var collectionNames = db.GetCollectionNames(); 
 
                 Console.WriteLine("Collections in the database:");
                 foreach (var name in collectionNames)
@@ -85,7 +83,6 @@ namespace BlitzPatch
                     var documents = db.GetCollection(name).FindAll();
                     foreach (var document in documents)
                     {
-                        // Check if the document contains the "Units" field
                         if (document.ContainsKey("j_") && document["j_"].ToString().Contains("Units"))
                         {
                             Console.WriteLine(document["j_"].ToString());
