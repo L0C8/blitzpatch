@@ -8,6 +8,14 @@ namespace BlitzPatch
 {
     internal class GameData
     {
+
+        public static readonly string[] factions =
+        {
+            "Allied", 
+            "Soviet",
+            "Axis"
+        };
+
         public static readonly string[] units_ger = {  "pz_i",
                                                         "pz_ii_a",
                                                         "ww2_gr_assaultsq1_t3",

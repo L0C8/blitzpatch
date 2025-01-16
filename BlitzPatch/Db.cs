@@ -16,29 +16,22 @@ namespace BlitzPatch
 {
     internal class Db
     {
-
-        public void loadUnit(string path)
+        public Db(string path)
         {
-            using (var db = new LiteDatabase(path))
-            {
-                var collectionNames = db.GetCollectionNames(); 
 
-                Console.WriteLine("Collections in the database:");
-                foreach (var name in collectionNames)
-                {
-                    Console.WriteLine($"- {name}");
-                    var documents = db.GetCollection(name).FindAll();
-                    foreach (var document in documents)
-                    {
-                        if (document.ContainsKey("j_") && document["j_"].ToString().Contains("Units"))
-                        {
-                            var jElement = document["j_"]; 
-                            Console.WriteLine(jElement.ToString());
-                        }
-                    }
-                }
-            }
         }
+
+        public void unlock(string str)
+        {
+
+        }
+
+        public void unlockAll()
+        {
+
+        }
+
+        public ArrayList units = new ArrayList();
     }
 }
 
