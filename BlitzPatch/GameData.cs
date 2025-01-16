@@ -319,10 +319,11 @@ namespace BlitzPatch
 
         public static readonly string[] mission_sov = { "test", "test" };
 
-        public static string addUnit()
+        public static string addUnit(string unit, int index)
         {
             // test
-            return "";
+            string test = "\t\t{\r\n\t\t\t\"exp\": 0.0,\r\n\t\t\t\"expLvl\": 0,\r\n\t\t\t\"id\": \""+unit+"\",\r\n\t\t\t\"idOnServer\": "+index.ToString()+",\r\n\t\t\t\"unitOnMaps\": {\r\n\t\t\t\t\"Unknown\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t},\r\n\t\t\t\t\"Early\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t},\r\n\t\t\t\t\"Middle\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t},\r\n\t\t\t\t\"Late\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t},";
+            return test;
         }
     }
 
