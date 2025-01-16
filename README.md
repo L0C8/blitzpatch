@@ -5,7 +5,7 @@ How to run
 • run Blitzpatch.exe
 • select between 'simple' or 'manual' 
 
-------------------------------------------------------
+-------------------------------------------------------
 
 ► Blitzpatch Simple
 The 'simple' setting will quickly patch the game so all missions and theaters are unlocked. Additionally, you'll be given a balanced deck of units for every faction. 
