@@ -358,9 +358,9 @@ namespace BlitzPatch
                                                             "ww2_cp2_t5_9",
                                                             "ww2_cp3_t7_1"
                                                        };
-        // variables for a_1_j
-
-        public static class a_1_j
+        
+        // data for a_1_j
+        public class UserProgress
         {
             public class Scenario
             {
@@ -422,6 +422,55 @@ namespace BlitzPatch
                 public string Id { get; set; }
                 public int Count { get; set; }
             }
+        }
+
+        // data for a_2_j
+        public class UserMap 
+        {
+            public class Maps
+            {
+
+            }
+
+            public class Units
+            {
+
+            }
+
+            public class SupportsReserve
+            {
+
+            }
+        }
+
+        // data for unit
+        public class Unit
+        {
+            public double exp { get; set; }
+            public int expLvl { get; set; }
+            public string id { get; set; }
+            public int idOnServer { get; set; }
+            public UnitOnMaps unitOnMaps { get; set; }
+        }
+        public class UnitOnMaps
+        {
+            public MapData Unknown { get; set; } = new MapData();
+            public MapData Early { get; set; } = new MapData();
+            public MapData Middle { get; set; } = new MapData();
+            public MapData Late { get; set; } = new MapData();
+        }
+        public class MapData
+        {
+            public int Parent { get; set; } = -1;
+            public Position Pos { get; set; } = new Position();
+            public double Angle { get; set; } = 0.0;
+            public int Modes { get; set; } = 0;
+        }
+        public class Position
+        {
+            public double X { get; set; } = 0.0;
+            public double Y { get; set; } = 0.0;
+            public double Z { get; set; } = 0.0;
         }
     }
 
