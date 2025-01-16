@@ -313,33 +313,116 @@ namespace BlitzPatch
                                                         "ww2_ru_bomber_t5",
                                                         "ww2_ru_bomber_t7"};
 
-        public static readonly string[] mission_ger = { "test", "test"};
+        public static readonly string campaign_ger = "GR_ParisGate";
 
-        public static readonly string[] mission_ald = { "test", "test" };
+        public static readonly string campaign_ald = "US_RoadToRome";
+        
+        public static readonly string campaign_sov = "RU_BerlinFall";
 
-        public static readonly string[] mission_sov = { "test", "test" };
+        public static readonly string[] mission_ger = {     "Poland_mission",
+                                                            "Arras",
+                                                            "Africa",
+                                                            "Daugavpils",
+                                                            "Sevastopol_mission",
+                                                            "ElAlamein_mission",
+                                                            "Ardennes_mission"
+                                                        };
 
-        public static string addUnit(string unit, int index)
+        public static readonly string[] mission_ald = {     "Libya_mission",
+                                                            "Crete",
+                                                            "Tobruk",
+                                                            "Lightfoot",
+                                                            "Anzio",
+                                                            "Normandy",
+                                                            "Bastogne"
+                                                        };
+       
+        public static readonly string[] mission_sov = {     "Luga",
+                                                            "Rjev",
+                                                            "Sevastopol_ru",
+                                                            "Stalingrad",
+                                                            "Kursk",
+                                                            "Warsaw",
+                                                            "Berlin2",
+                                                            "Berlin"
+                                                        };
+
+        public static readonly string[] pvp_maps = {
+                                                        "ww2_cp2_t5_6",
+                                                        "ww2_cp2_t5_9",
+                                                        "ww2_cp3_t7_1"
+                                                    };
+
+        public static readonly string[] pvp_maps_ids = {
+                                                            "ww2_cp1_t3_4",
+                                                            "ww2_cp2_t5_9",
+                                                            "ww2_cp3_t7_1"
+                                                       };
+        // variables for a_1_j
+
+        public static class a_1_j
         {
-            // test
-            string test = "\t\t{\r\n\t\t\t\"exp\": 0.0,\r\n\t\t\t\"expLvl\": 0,\r\n\t\t\t\"id\": \""+unit+"\",\r\n\t\t\t\"idOnServer\": "+index.ToString()+",\r\n\t\t\t\"unitOnMaps\": {\r\n\t\t\t\t\"Unknown\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t},\r\n\t\t\t\t\"Early\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t},\r\n\t\t\t\t\"Middle\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t},\r\n\t\t\t\t\"Late\": {\r\n\t\t\t\t\t\"Parent\": -1,\r\n\t\t\t\t\t\"Pos\": {\r\n\t\t\t\t\t\t\"X\": 0.0,\r\n\t\t\t\t\t\t\"Y\": 0.0,\r\n\t\t\t\t\t\t\"Z\": 0.0\r\n\t\t\t\t\t},\r\n\t\t\t\t\t\"Angle\": 0.0,\r\n\t\t\t\t\t\"Modes\": 0\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t},";
-            return test;
+            public class Scenario
+            {
+                public bool Unlocked { get; set; }
+                public bool Complete { get; set; }
+                public string Id { get; set; }
+            }
+
+            public class VisitedTier
+            {
+                public bool AuthComplete { get; set; }
+                public int TierType { get; set; }
+                public int FactionType { get; set; }
+                public int Level { get; set; }
+                public string PvpMapId { get; set; }
+                public DateTime LastActivity { get; set; }
+                public TimeSpan TimeInTier { get; set; }
+            }
+
+            public class FactionProgress
+            {
+                public List<string> UnlockedPvpMaps { get; set; }
+                public WinLoseStats WinLoseStat { get; set; }
+                public int CurrentTier { get; set; }
+                public int FactionType { get; set; }
+                public PvpMapIds PvpMapId { get; set; }
+                public DateTime LastLoadedDate { get; set; }
+                public int TutorialStep { get; set; }
+            }
+
+            public class WinLoseStats
+            {
+                public int winAtt { get; set; }
+                public int winDef { get; set; }
+                public int loseAtt { get; set; }
+                public int loseDef { get; set; }
+                public int TotalBattles { get; set; }
+            }
+
+            public class PvpMapIds
+            {
+                public string Early { get; set; }
+                public string Middle { get; set; }
+                public string Late { get; set; }
+            }
+
+            public class PvEMission
+            {
+                public string MissionId { get; set; }
+                public string CampaignId { get; set; }
+                public bool IsMainObjectivesCompleted { get; set; }
+                public bool IsOptionalObjectivesCompleted { get; set; }
+                public bool IsChallengesCompleted { get; set; }
+                public int MaxAchievedStars { get; set; }
+            }
+
+            public class Achievement
+            {
+                public string Id { get; set; }
+                public int Count { get; set; }
+            }
         }
     }
 
-    class Unit
-    {
-        string Id;
-        string OwnerID;
-        int Health;
-        double HealthDelta;
-        double Exp;
-        double ExpNew;
-        int ExpLvlNew;
-        bool isUsed;
-        int UnitClass;
-        bool buffed;
-        double dealedDamage;
-
-        }
 }
