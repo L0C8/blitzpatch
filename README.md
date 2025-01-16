@@ -1,8 +1,11 @@
 Blitzkrieg 3 Patcher
 
 How to run 
+
 • place .exe into your [...\\SteamLibrary\steamapps\common\Blitzkrieg3\ folder
+
 • run Blitzpatch.exe
+
 • select between 'simple' or 'manual' 
 
 -------------------------------------------------------
