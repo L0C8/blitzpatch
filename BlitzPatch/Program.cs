@@ -11,14 +11,30 @@ namespace BlitzPatch
     {
         static void Main(string[] args)
         {
-            Db db = new Db();
-            // db.viewUnits();
-            // 
-            db.loadUnit("D:\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\Data\\User_\\a_");
-            Console.ReadKey();
-            // db.test("D:\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\Data\\User_\\a_");
-            // Console.WriteLine();
-            // Console.ReadKey();
+            if (Utils.checkdir())
+            {
+                Console.WriteLine("Blitzpatch 0.00");
+                Console.WriteLine("[1]: Simple Patch");
+                Console.WriteLine("[2]: Manual Patch");
+                Console.WriteLine("[0]: Exit");
+                Console.ReadKey();
+                if (true)
+                {
+                    Utils.SimplePatch();
+                } else
+                {
+                    Utils.ManualPatch();
+                }
+            } else
+            {
+                Console.WriteLine("Invalid Directory.\nPlace Blitzpatch.exe into the [...]\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\ directory.\n\nPress any key to close");
+                Console.ReadKey();
+            }
+        }
+
+        public static void simplepatch()
+        {
+            //load user/a
         }
     }
 }
