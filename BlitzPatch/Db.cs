@@ -16,22 +16,6 @@ namespace BlitzPatch
 {
     internal class Db
     {
-        public Db(string path)
-        {
-
-        }
-
-        public void unlock(string str)
-        {
-
-        }
-
-        public void unlockAll()
-        {
-
-        }
-
-        public ArrayList units = new ArrayList();
     }
 }
 
