@@ -16,7 +16,7 @@ namespace BlitzPatch
             "Axis"
         };
 
-        public static readonly string[] units_ger = {  "pz_i",
+        public static readonly string[] units_ger = {   "pz_i",
                                                         "pz_ii_a",
                                                         "ww2_gr_assaultsq1_t3",
                                                         "ww2_gr_assaultsq2_t3",
@@ -451,8 +451,23 @@ namespace BlitzPatch
             }
         }
 
-        // data for unit
-        public class Unit
+        // data for maps
+        public class MapEra
+        {
+            public int Epoch { get; set; }
+            public DateTime ShieldEndTime { get; set; }
+            public DateTime MmLockEndTime { get; set; }
+            public DateTime LastLoadedTime { get; set; }
+            public DateTime ActivityTime { get; set; }
+            public DateTime MigrationTime { get; set; }
+            public int DailyAttacks { get; set; }
+            public int Power { get; set; }
+            public string SceneName { get; set; }
+
+        }
+
+            // data for unit
+            public class Unit
         {
             public double exp { get; set; }
             public int expLvl { get; set; }

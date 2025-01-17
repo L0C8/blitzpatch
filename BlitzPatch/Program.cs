@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BlitzPatch
 {
@@ -11,30 +13,10 @@ namespace BlitzPatch
     {
         static void Main(string[] args)
         {
-            if (Utils.checkdir())
-            {
-                Console.WriteLine("Blitzpatch 0.00");
-                Console.WriteLine("[1]: Simple Patch");
-                Console.WriteLine("[2]: Manual Patch");
-                Console.WriteLine("[0]: Exit");
-                Console.ReadKey();
-                if (true)
-                {
-                    Utils.SimplePatch();
-                } else
-                {
-                    Utils.ManualPatch();
-                }
-            } else
-            {
-                Console.WriteLine("Invalid Directory.\nPlace Blitzpatch.exe into the [...]\\SteamLibrary\\steamapps\\common\\Blitzkrieg3\\ directory.\n\nPress any key to close");
-                Console.ReadKey();
-            }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Gui());
         }
 
-        public static void simplepatch()
-        {
-            //load user/a
-        }
     }
 }

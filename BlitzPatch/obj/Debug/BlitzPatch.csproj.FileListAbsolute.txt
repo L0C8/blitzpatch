@@ -27,3 +27,6 @@ C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\bin\Debug\System.Text.Encodings.
 C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\bin\Debug\System.Text.Json.xml
 C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\bin\Debug\System.ValueTuple.xml
+C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\obj\Debug\BlitzPatch.Gui.resources
+C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\obj\Debug\BlitzPatch.csproj.GenerateResource.cache
+C:\Users\Zek\source\repos\Blitzpatch\BlitzPatch\obj\Debug\BlitzPatch.Properties.Resources.resources
