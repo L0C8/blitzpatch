@@ -117,7 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="richTextBox1.Text" xml:space="preserve">
-    <value>(Placeholder, I'm going to add something here later. But for now if you can read this the game is patched. If you try running the game and the campaigns aren't locked check the github readme, it's a SteamCloud error. Oh, try the unit editor!)</value>
-  </data>
 </root>

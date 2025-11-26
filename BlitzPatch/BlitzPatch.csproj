@@ -78,12 +78,14 @@
   <ItemGroup>
     <Compile Include="Db.cs" />
     <Compile Include="GameData.cs" />
+    <Compile Include="LiteDB_Browser.cs" />
     <Compile Include="Gui.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Gui.Designer.cs">
       <DependentUpon>Gui.cs</DependentUpon>
     </Compile>
+    <Compile Include="LiteDB_Browser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

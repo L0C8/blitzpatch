@@ -13,9 +13,20 @@ namespace BlitzPatch
     {
         static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Gui());
+            var dbPath = args != null && args.Length > 0 ? args[0] : null;
+
+            if (string.IsNullOrWhiteSpace(dbPath))
+            {
+                Console.Write("Enter path to the LiteDB file: ");
+                dbPath = Console.ReadLine();
+            }
+
+            LiteDb_Browser.Browse(dbPath);
+
+            // Leave the original GUI entry point here if we want to bring it back later.
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Gui());
         }
 
     }
