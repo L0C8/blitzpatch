@@ -75,6 +75,7 @@ namespace BlitzPatch
                         Console.WriteLine("Commands:");
                         Console.WriteLine("  Type collection index (0 - {0}) and press Enter", collections.Count - 1);
                         Console.WriteLine("  J = Dump all collections as JSON");
+                        Console.WriteLine("  E = Export database to JSON file");
                         Console.WriteLine("  Q = Quit");
                     }
 
@@ -90,6 +91,11 @@ namespace BlitzPatch
                     if (input.Equals("j", StringComparison.OrdinalIgnoreCase))
                     {
                         DumpAllCollectionsJson(db, collections);
+                        continue;
+                    }
+                    if (input.Equals("e", StringComparison.OrdinalIgnoreCase))
+                    {
+                        ExportDatabaseJson(db, dbPath, collections);
                         continue;
                     }
 
@@ -267,6 +273,78 @@ namespace BlitzPatch
 
                 Console.WriteLine("End of database. Press any key to return to menu.");
                 Console.ReadKey(true);
+            }
+
+            private static void ExportDatabaseJson(LiteDatabase db, string dbPath, List<string> collections)
+            {
+                var directory = Path.GetDirectoryName(dbPath) ?? Directory.GetCurrentDirectory();
+                var baseName = Path.GetFileNameWithoutExtension(dbPath);
+                var exportPath = Path.Combine(directory, $"{baseName}_export.json");
+
+                if (WriteDatabaseJson(db, collections, exportPath))
+                {
+                    Console.WriteLine($"Export complete: {exportPath}");
+                }
+                else
+                {
+                    Console.WriteLine("Export failed.");
+                }
+
+                Console.WriteLine("Press any key to return to menu.");
+                Console.ReadKey(true);
+            }
+
+            private static bool WriteDatabaseJson(LiteDatabase db, List<string> collections, string exportPath)
+            {
+                try
+                {
+                    using (var writer = new StreamWriter(exportPath, false, new UTF8Encoding(false)))
+                    {
+                        writer.WriteLine("{");
+
+                        for (int i = 0; i < collections.Count; i++)
+                        {
+                            var name = collections[i];
+                            var col = db.GetCollection(name);
+
+                            writer.WriteLine($"  \"{name}\": [");
+
+                            bool firstDoc = true;
+                            foreach (var doc in col.FindAll())
+                            {
+                                if (!firstDoc) writer.WriteLine(",");
+                                var json = JsonSerializer.Serialize(doc, pretty: true, writeBinary: false);
+                                writer.Write(IndentJson(json, "    "));
+                                firstDoc = false;
+                            }
+
+                            writer.WriteLine();
+                            writer.Write("  ]");
+                            if (i < collections.Count - 1) writer.Write(",");
+                            writer.WriteLine();
+                        }
+
+                        writer.WriteLine("}");
+                    }
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Export failed:");
+                    Console.WriteLine(ex.Message);
+                    return false;
+                }
+            }
+
+            private static string IndentJson(string json, string indent)
+            {
+                var lines = json.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    lines[i] = indent + lines[i];
+                }
+                return string.Join(Environment.NewLine, lines);
             }
 
             private static string GetIdPreview(BsonDocument doc)
