@@ -14,6 +14,19 @@ namespace BlitzPatch
         [STAThread]
         static void Main(string[] args)
         {
+            if (args != null && args.Any(a => a.Equals("--cli", StringComparison.OrdinalIgnoreCase)))
+            {
+                RunConsoleFlow(args);
+                return;
+            }
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Gui());
+        }
+
+        private static void RunConsoleFlow(string[] args)
+        {
             Console.WriteLine("Select an action:");
             Console.WriteLine("1) Browse a LiteDB file");
             Console.WriteLine("2) Convert JSON to LiteDB");
